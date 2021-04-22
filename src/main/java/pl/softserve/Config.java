@@ -35,5 +35,4 @@ public class Config extends AbstractAnnotationConfigDispatcherServletInitializer
         return vr;
     }
 
-
 }
