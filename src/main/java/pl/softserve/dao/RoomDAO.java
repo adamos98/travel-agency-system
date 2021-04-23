@@ -1,15 +1,46 @@
 package pl.softserve.dao;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 import pl.softserve.Models.Room;
 
 import java.util.List;
 
-public interface RoomDAO {
+@Repository
+public class RoomDAO {
 
-public void addRoom(Room r);
-public void updateRoom(Room r);
-public List<Room> listRooms();
-public Room getRoomById(int id);
-public void removePerson(int id);
+    private final SessionFactory sessionFactory;
 
+    public RoomDAO(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    public List<Room> getAllRooms(){
+        Session session = this.sessionFactory.getCurrentSession();
+        return (List<Room>) session.createQuery("from Room ").list();
+    }
+
+    public Room getRoom(int id){
+        Session session = this.sessionFactory.getCurrentSession();
+        return session.get(Room.class,id);
+    }
+
+    public Room addRoom(Room room){
+        Session session = this.sessionFactory.getCurrentSession();
+        session.persist(room);
+        return room;
+    }
+
+    public void updateRoom(Room room){
+        Session session = this.sessionFactory.getCurrentSession();
+        session.update(room);
+    }
+
+    public void deleteCountry(int id){
+        Session session = this.sessionFactory.getCurrentSession();
+        Room room = (Room) session.load(Room.class,id);
+        if (null != room)
+            session.delete(room);
+    }
 }

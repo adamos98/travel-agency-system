@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+
 public class Country {
 
     @Id
@@ -13,6 +14,15 @@ public class Country {
     private int id;
     private String countryCode;
     private String name;
+
+    public Country(int id, String countryCode, String name) {
+        this.id = id;
+        this.countryCode = countryCode;
+        this.name = name;
+    }
+
+    public Country() {
+    }
 
     public int getId() {
         return id;

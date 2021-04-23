@@ -4,45 +4,45 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import pl.softserve.Models.Booking;
-import pl.softserve.Models.Hotel;
+import pl.softserve.Models.Country;
 
 import java.util.List;
 
 @Repository
-public class HotelDAO {
+public class BookingDAO {
 
     private final SessionFactory sessionFactory;
 
-
-    public HotelDAO(SessionFactory sessionFactory) {
+    public BookingDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
-    public List<Hotel> getAllHotels(){
+    public List<Booking> getAllBookings(){
         Session session = this.sessionFactory.getCurrentSession();
-        return (List<Hotel>) session.createQuery("from Country ").list();
+        return (List<Booking>) session.createQuery("from Booking").list();
     }
 
-    public Hotel getHotel(int id){
+    public Booking getBooking(int id){
         Session session = this.sessionFactory.getCurrentSession();
-        return session.get(Hotel.class, id);
+        return session.get(Booking.class,id);
     }
 
-    public Hotel addHotel(Hotel hotel){
+    public Booking addBooking(Booking booking){
         Session session = this.sessionFactory.getCurrentSession();
-        session.persist(hotel);
-        return hotel;
+        session.persist(booking);
+        return booking;
     }
 
-    public void updateHotel(Hotel hotel){
+    public void updateBooking(Booking booking){
         Session session = this.sessionFactory.getCurrentSession();
-        session.update(hotel);
+        session.update(booking);
     }
 
-    public void deleteHotel(int id){
+    public void deleteBooking(int id){
         Session session = this.sessionFactory.getCurrentSession();
-        Hotel hotel = (Hotel) session.load(Hotel.class, id);
-        if (null != hotel)
-            session.delete(hotel);
+        Booking booking = (Booking) session.load(Booking.class, id);
+        if(null != booking)
+            session.delete(booking);
     }
+
 }
