@@ -16,9 +16,7 @@ public class Hotel {
     @JoinColumn(name = "countryId")
     private Country country;
 
-    @ManyToOne
-    @JoinColumn(name = "roomId")
-    private Room room;
+
 
     public int getId() {
         return id;
@@ -60,13 +58,6 @@ public class Hotel {
         this.country = country;
     }
 
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
-    }
 
     @Override
     public String toString() {
@@ -76,7 +67,6 @@ public class Hotel {
                 ", address='" + address + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", country=" + country +
-                ", room=" + room +
                 '}';
     }
 }

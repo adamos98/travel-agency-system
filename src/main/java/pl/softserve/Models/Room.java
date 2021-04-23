@@ -1,9 +1,6 @@
 package pl.softserve.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Room {
@@ -12,7 +9,11 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String numberOfRoom;
-    private boolean availability; // FIXME: 22-Apr-21 to think about this
+    private byte availability;
+
+    @ManyToOne
+    @JoinColumn(name = "hotelId")
+    private Hotel hotel;
 
     public int getId() {
         return id;
@@ -30,12 +31,20 @@ public class Room {
         this.numberOfRoom = numberOfRoom;
     }
 
-    public boolean isAvailability() {
+    public byte getAvailability() {
         return availability;
     }
 
-    public void setAvailability(boolean availability) {
+    public void setAvailability(byte availability) {
         this.availability = availability;
+    }
+
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
 
     @Override
@@ -44,6 +53,7 @@ public class Room {
                 "id=" + id +
                 ", numberOfRoom='" + numberOfRoom + '\'' +
                 ", availability=" + availability +
+                ", hotel=" + hotel +
                 '}';
     }
 }
