@@ -2,6 +2,7 @@ package pl.softserve.Services;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.softserve.Models.Country;
 import pl.softserve.Models.Hotel;
 import pl.softserve.dao.HotelDAO;
 
@@ -19,6 +20,11 @@ public class HotelService {
     @Transactional
     public List<Hotel> getAllHotels(){
         return hotelDAO.getAllHotels();
+    }
+
+    @Transactional
+    public List<Country> getAllCountries(){
+        return hotelDAO.getAllCountries();
     }
 
     @Transactional

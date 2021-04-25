@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import pl.softserve.Models.Booking;
+import pl.softserve.Models.Country;
 import pl.softserve.Models.Hotel;
 
 import java.util.List;
@@ -20,7 +21,12 @@ public class HotelDAO {
 
     public List<Hotel> getAllHotels(){
         Session session = this.sessionFactory.getCurrentSession();
-        return (List<Hotel>) session.createQuery("from Country ").list();
+        return (List<Hotel>) session.createQuery("from Hotel ").list();
+    }
+
+    public List<Country> getAllCountries(){
+        Session session = this.sessionFactory.getCurrentSession();
+        return (List<Country>) session.createQuery("from Country ").list();
     }
 
     public Hotel getHotel(int id){
