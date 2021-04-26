@@ -1,6 +1,7 @@
 package pl.softserve.Models;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Room {
@@ -9,10 +10,23 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String numberOfRoom;
+    
 
     @ManyToOne
     @JoinColumn(name = "hotelId")
     private Hotel hotel;
+
+
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "room")
+    private Set<Booking> bookings;
+
+    public Set<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(Set<Booking> bookings) {
+        this.bookings = bookings;
+    }
 
     public int getId() {
         return id;

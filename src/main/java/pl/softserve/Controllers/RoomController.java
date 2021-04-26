@@ -1,15 +1,16 @@
 package pl.softserve.Controllers;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import pl.softserve.Helpers.BookingParameters;
+import pl.softserve.Models.Booking;
 import pl.softserve.Models.Hotel;
 import pl.softserve.Models.Room;
 import pl.softserve.Services.RoomService;
 
+import java.sql.Date;
 import java.util.List;
 
 @Controller
@@ -43,6 +44,30 @@ public class RoomController {
         else
             roomService.updateRoom(room);
         return "redirect:/getAllRooms";
+    }
+
+    @RequestMapping(value = "/getAvailableRoomsByDate/", method = RequestMethod.GET, headers = "Accept=application/json")
+    public String getAvailableRooms(@ModelAttribute("bookingParameters") BookingParameters bookingParameters,
+                                    @RequestParam String checkIn, @RequestParam String checkOut,
+                                    @RequestParam int hotelId, Model model){
+        List<Room> listOfAllRooms = roomService.getAvailableRooms(checkOut,checkIn,hotelId);
+        List<Hotel> listOfHotels = roomService.getAllHotels();
+        model.addAttribute("room", new Room());
+        model.addAttribute("booking", new Booking());
+        model.addAttribute("listOfAllRooms", listOfAllRooms);
+        model.addAttribute("listOfHotels", listOfHotels);
+        return "roomAvailability";
+    }
+
+    @RequestMapping(value = "/getAvailableRooms", method = RequestMethod.GET, headers = "Accept=application/json")
+    public String getAvailableRooms(@ModelAttribute("bookingParameters") BookingParameters bookingParameters, Model model){
+        List<Room> listOfAllRooms = roomService.getAllRooms();
+        List<Hotel> listOfHotels = roomService.getAllHotels();
+        model.addAttribute("booking", new Booking());
+        model.addAttribute("room", new Room());
+        model.addAttribute("listOfAllRooms", listOfAllRooms);
+        model.addAttribute("listOfHotels", listOfHotels);
+        return "roomAvailability";
     }
 
     @RequestMapping(value = "/updateRoom/{id}", method = RequestMethod.GET)

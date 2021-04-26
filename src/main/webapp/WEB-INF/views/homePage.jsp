@@ -41,6 +41,7 @@
             padding: 5px 10px;
         }
     </style>
+
 </head>
 <body>
 <form:form method="get" modelAttribute="country"

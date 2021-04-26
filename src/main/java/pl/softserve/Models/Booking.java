@@ -1,5 +1,7 @@
 package pl.softserve.Models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -12,7 +14,9 @@ public class Booking {
     private int id;
     private BigDecimal price; //added column
     private Date dateOfOrderPlaced;
+
     private Date checkIn;
+
     private Date checkOut;
 
 

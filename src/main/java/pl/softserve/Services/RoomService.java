@@ -6,6 +6,7 @@ import pl.softserve.Models.Hotel;
 import pl.softserve.Models.Room;
 import pl.softserve.dao.RoomDAO;
 
+import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -25,6 +26,11 @@ public class RoomService {
     @Transactional
     public List<Hotel> getAllHotels(){
         return roomDAO.getAllHotels();
+    }
+
+    @Transactional
+    public List<Room> getAvailableRooms(String checkIn, String checkOut, int hotelId){
+        return roomDAO.getAvailableRooms(checkIn,checkOut, hotelId);
     }
 
     @Transactional

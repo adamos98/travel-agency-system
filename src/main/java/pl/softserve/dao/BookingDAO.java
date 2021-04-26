@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import pl.softserve.Models.Booking;
 import pl.softserve.Models.Country;
 
+import java.sql.Date;
 import java.util.List;
 
 @Repository

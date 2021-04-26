@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import pl.softserve.Models.Hotel;
 import pl.softserve.Models.Room;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -25,6 +27,12 @@ public class RoomDAO {
     public List<Hotel> getAllHotels(){
         Session session = this.sessionFactory.getCurrentSession();
         return (List<Hotel>) session.createQuery("from Hotel ").list();
+    }
+
+    public List<Room> getAvailableRooms(String checkIn, String checkOut, int hotelId){
+        Session session = this.sessionFactory.getCurrentSession();
+        return (List<Room>) session.createQuery
+                ("from Room r where r.id not in (select b.room.id from Booking b where not (b.checkOut < '" + checkOut + "' or b.checkIn > '" + checkIn + "')) and r.hotel.id = '" + hotelId + "'").list();
     }
 
     public Room getRoom(int id){
@@ -49,4 +57,6 @@ public class RoomDAO {
         if (null != room)
             session.delete(room);
     }
+
+
 }
