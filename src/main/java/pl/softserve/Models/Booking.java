@@ -22,8 +22,16 @@ public class Booking {
 
 
     @ManyToOne
-    @JoinColumn(name = "hotelId")
-    private Hotel hotel;
+    @JoinColumn(name = "roomId")
+    private Room room;
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
 
     public int getId() {
         return id;
@@ -73,11 +81,4 @@ public class Booking {
         this.user = user;
     }
 
-    public Hotel getHotel() {
-        return hotel;
-    }
-
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
-    }
 }

@@ -22,6 +22,11 @@ public class UserDAO {
         return (List<User>) session.createQuery("from User").list();
     }
 
+    public List<User> getAllCustomers(){
+        Session session = this.sessionFactory.getCurrentSession();
+        return (List<User>) session.createQuery("from User where role = '1'").list();
+    }
+
     public User getUser(int id){
         Session session = this.sessionFactory.getCurrentSession();
         return session.get(User.class,id);

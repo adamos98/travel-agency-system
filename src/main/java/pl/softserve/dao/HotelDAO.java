@@ -29,6 +29,12 @@ public class HotelDAO {
         return (List<Country>) session.createQuery("from Country ").list();
     }
 
+    public List<Hotel> getHotelsByCountryId(int countryId){
+        Session session = this.sessionFactory.getCurrentSession();
+        return (List<Hotel>) session.createQuery(
+                "from Hotel where country.id = '" + countryId + "'").list();
+    } // TODO: 25-Apr-21  
+
     public Hotel getHotel(int id){
         Session session = this.sessionFactory.getCurrentSession();
         return session.get(Hotel.class, id);

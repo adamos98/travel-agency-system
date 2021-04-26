@@ -22,6 +22,11 @@ public class UserService {
     }
 
     @Transactional
+    public List<User> getAllCustomers(){
+        return userDAO.getAllCustomers();
+    }
+
+    @Transactional
     public User getUser(int id){
         return userDAO.getUser(id);
     }

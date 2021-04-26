@@ -87,7 +87,7 @@
             <th width="120">Hotel address</th>
             <th width="120">Hotel name</th>
             <th width="120">Hotel phone number</th>
-            <th width="120">Country ID</th>
+            <th width="120">Country</th>
         </tr>
         <c:forEach items="${listOfHotels}" var="hotel">
             <tr>

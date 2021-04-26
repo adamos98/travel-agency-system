@@ -1,6 +1,7 @@
 package pl.softserve.Models;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -18,6 +19,17 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "roleId")
     private Role role;
+
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "user")
+    private Set<Booking> bookings;
+
+    public Set<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(Set<Booking> bookings) {
+        this.bookings = bookings;
+    }
 
     public int getId() {
         return id;

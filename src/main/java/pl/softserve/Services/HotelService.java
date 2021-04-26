@@ -28,6 +28,11 @@ public class HotelService {
     }
 
     @Transactional
+    public List<Hotel> getHotelsByCountryId(int countryId){
+        return hotelDAO.getHotelsByCountryId(countryId);
+    }
+
+    @Transactional
     public Hotel getHotel(int id){
         return hotelDAO.getHotel(id);
     }

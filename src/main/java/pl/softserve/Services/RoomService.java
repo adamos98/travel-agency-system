@@ -2,6 +2,7 @@ package pl.softserve.Services;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.softserve.Models.Hotel;
 import pl.softserve.Models.Room;
 import pl.softserve.dao.RoomDAO;
 
@@ -19,6 +20,11 @@ public class RoomService {
     @Transactional
     public List<Room> getAllRooms(){
         return roomDAO.getAllRooms();
+    }
+
+    @Transactional
+    public List<Hotel> getAllHotels(){
+        return roomDAO.getAllHotels();
     }
 
     @Transactional
