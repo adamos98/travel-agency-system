@@ -7,7 +7,6 @@ import pl.softserve.Models.Hotel;
 import pl.softserve.Models.Room;
 
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
 
 @Repository

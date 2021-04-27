@@ -5,7 +5,6 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.softserve.Models.User;
 import pl.softserve.dao.UserDAO;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -47,7 +46,4 @@ public class UserService {
         userDAO.deleteUser(id);
     }
 
-    public LocalDate converter(String date){
-        return LocalDate.parse(date);
-    }
 }
