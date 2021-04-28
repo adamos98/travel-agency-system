@@ -46,4 +46,9 @@ public class UserService {
         userDAO.deleteUser(id);
     }
 
+    @Transactional
+    public User findByEmail(String email){
+        return userDAO.findByEmail(email);
+    }
+
 }

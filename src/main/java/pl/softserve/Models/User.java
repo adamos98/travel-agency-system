@@ -6,6 +6,7 @@ import java.util.Set;
 @Entity
 public class User {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -15,13 +16,26 @@ public class User {
     private String lname;
     private String phoneNumber;
 
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "roleId")
-    private Role role;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private Role roles;
 
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "user")
     private Set<Booking> bookings;
+
+    public User(int id, String email, String password, String fname, String lname, String phoneNumber, Role roles, Set<Booking> bookings) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.fname = fname;
+        this.lname = lname;
+        this.phoneNumber = phoneNumber;
+        this.roles = roles;
+        this.bookings = bookings;
+    }
+
+    public User() {
+    }
 
     public Set<Booking> getBookings() {
         return bookings;
@@ -79,24 +93,12 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public Role getRole() {
-        return role;
+    public Role getRoles() {
+        return roles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(Role roles) {
+        this.roles = roles;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", fname='" + fname + '\'' +
-                ", lname='" + lname + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", role=" + role +
-                '}';
-    }
 }
