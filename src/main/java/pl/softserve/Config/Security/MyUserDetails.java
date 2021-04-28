@@ -11,29 +11,24 @@ import java.util.Collection;
 public class MyUserDetails implements UserDetails {
 
     private User user;
-    private String username;
-    private String password;
-    private String role;
 
     public MyUserDetails(User user) {
-        this.username = user.getEmail();
-        this.password = user.getPassword();
-        this.role = user.getRoles().name();
+        this.user = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority(role));
+        return Arrays.asList(new SimpleGrantedAuthority(user.getRoles().name()));
     }
 
     @Override
     public String getPassword() {
-        return password;
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return username;
+        return user.getEmail();
     }
 
     @Override

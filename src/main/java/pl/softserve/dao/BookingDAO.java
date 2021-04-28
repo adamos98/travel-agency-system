@@ -2,6 +2,7 @@ package pl.softserve.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import pl.softserve.Models.Booking;
 import pl.softserve.Models.Country;
@@ -14,6 +15,7 @@ public class BookingDAO {
 
     private final SessionFactory sessionFactory;
 
+    @Autowired
     public BookingDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }

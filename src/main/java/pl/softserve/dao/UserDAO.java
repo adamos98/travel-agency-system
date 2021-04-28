@@ -16,21 +16,21 @@ public class UserDAO {
 
     private final SessionFactory sessionFactory;
 
+    @Autowired
     public UserDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
     public List<User> getAllUsers(){
 
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         return (List<User>) session.createQuery("from User").list();
     }
 
     public List<User> getAllCustomers(){
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("from User u where u.roles = 'USER'");
         List<User> users = query.getResultList();
-        session.close();
         return users;
 
     }
@@ -60,11 +60,9 @@ public class UserDAO {
     }
 
     public User findByEmail(String email){
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("from User u where u.email =:email")
                 .setParameter("email", email);
-        User user = (User) query.getSingleResult();
-        session.close();
-        return user;
+        return (User) query.getSingleResult();
     }
 }

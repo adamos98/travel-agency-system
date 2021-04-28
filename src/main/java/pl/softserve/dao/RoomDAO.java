@@ -2,6 +2,7 @@ package pl.softserve.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import pl.softserve.Models.Hotel;
 import pl.softserve.Models.Room;
@@ -14,6 +15,7 @@ public class RoomDAO {
 
     private final SessionFactory sessionFactory;
 
+    @Autowired
     public RoomDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
@@ -31,7 +33,9 @@ public class RoomDAO {
     public List<Room> getAvailableRooms(String checkIn, String checkOut, int hotelId){
         Session session = this.sessionFactory.getCurrentSession();
         return (List<Room>) session.createQuery
-                ("from Room r where r.id not in (select b.room.id from Booking b where not (b.checkOut < '" + checkOut + "' or b.checkIn > '" + checkIn + "')) and r.hotel.id = '" + hotelId + "'").list();
+                ("from Room r where r.id not in (select b.room.id from Booking b " +
+                        "where not (b.checkOut < '" + checkOut + "' or b.checkIn > '" +
+                        checkIn + "')) and r.hotel.id = '" + hotelId + "'").list();
     }
 
     public Room getRoom(int id){

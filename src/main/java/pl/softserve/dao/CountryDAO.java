@@ -13,6 +13,7 @@ public class CountryDAO {
 
     private final SessionFactory sessionFactory;
 
+    @Autowired
     public CountryDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
