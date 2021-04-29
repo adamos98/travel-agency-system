@@ -50,6 +50,7 @@
     <table>
     <tr>
     <th colspan="2">Show hotels by country</th>
+        <th><a href="${pageContext.request.contextPath}/homePage">Go to homepage</a></th>
     </tr>
     <tr>
         <td>Country: </td>

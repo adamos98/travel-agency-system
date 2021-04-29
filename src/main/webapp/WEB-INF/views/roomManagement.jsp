@@ -46,6 +46,7 @@
     <table>
         <tr>
             <th colspan="2">Add Room</th>
+            <th><a href="${pageContext.request.contextPath}/homePage">Go to homepage</a></th>
         </tr>
         <tr>
             <form:hidden path="id" />

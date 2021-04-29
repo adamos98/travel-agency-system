@@ -61,6 +61,7 @@
     <table>
         <tr>
             <th colspan="2">Show available rooms</th>
+            <th><a href="${pageContext.request.contextPath}/homePage">Go to homepage</a></th>
         </tr>
         <tr>
             <td>Check in: </td>

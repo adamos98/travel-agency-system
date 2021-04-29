@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -14,7 +15,7 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private BigDecimal price; //added column
-    private LocalDate dateOfOrderPlaced;
+    private LocalDateTime dateOfOrderPlaced;
 
     private LocalDate checkIn;
 
@@ -54,11 +55,11 @@ public class Booking {
         this.price = price;
     }
 
-    public LocalDate getDateOfOrderPlaced() {
+    public LocalDateTime getDateOfOrderPlaced() {
         return dateOfOrderPlaced;
     }
 
-    public void setDateOfOrderPlaced(LocalDate dateOfOrderPlaced) {
+    public void setDateOfOrderPlaced(LocalDateTime dateOfOrderPlaced) {
         this.dateOfOrderPlaced = dateOfOrderPlaced;
     }
 

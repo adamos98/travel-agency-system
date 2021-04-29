@@ -19,23 +19,21 @@
 </head>
 <body>
 <form name="signIn" action="/signIn" method="post"
-      style="width: 30%; background-color: black;opacity: 0.85;border-radius: 7px;margin:auto">
+      style="width: 30%; background-color: black;margin:auto">
 
 
     <br>
     <label for="Username">
         Email:
         <div>
-            <input type="text" placeholder="Email" id="Username" name="username" value=''
-                   style="border-radius: 5px;height: 38px;">
+            <input type="text" placeholder="Email" id="Username" name="username" value=''>
         </div>
     </label>
     <br>
     <label for="Password">
         Password:
         <div>
-            <input type="password" placeholder="Password" id="Password" name="password"
-                   style="border-radius: 5px;height: 38px;">
+            <input type="password" placeholder="Password" id="Password" name="password">
         </div>
     </label>
 

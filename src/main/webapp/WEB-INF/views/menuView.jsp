@@ -13,29 +13,78 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+        .blue-button {
+            background: #25A6E1;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#25A6E1', endColorstr='#188BC0', GradientType=0);
+            padding: 3px 5px;
+            color: #fff;
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            border-radius: 2px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 4px;
+            border: 1px solid #1A87B9
+        }
+
+        table {
+            font-family: "Helvetica Neue", Helvetica, sans-serif;
+        }
+
+        th {
+            background: SteelBlue;
+            color: white;
+        }
+
+        td, th {
+            border: 1px solid gray;
+            text-align: left;
+            padding: 5px 10px;
+        }
+    </style>
 </head>
 <body>
-<ul class="navbar">
+    <table>
+        <tr>
     <sec:authorize access="hasAuthority('MANAGER')">
-    <li><a href="${pageContext.request.contextPath}/getAllCustomers">View all users and their orders</a></li>
+    <td><a href="${pageContext.request.contextPath}/getAllCustomers">View all users and their orders</a></td>
     </sec:authorize>
+        </tr>
+        <tr>
     <sec:authorize access="hasAuthority('MANAGER')">
-    <li><a href="${pageContext.request.contextPath}/getAllHotels">Manage hotels</a></li>
+        <td><a href="${pageContext.request.contextPath}/getAllHotels">Manage hotels</a></td>
     </sec:authorize>
+        </tr>
+        <tr>
         <sec:authorize access="hasAuthority('MANAGER')">
-        <li><a href="${pageContext.request.contextPath}/getAllRooms">Manage rooms</a></li>
+            <td><a href="${pageContext.request.contextPath}/getAllRooms">Manage rooms</a></td>
         </sec:authorize>
+        </tr>
+        <tr>
         <sec:authorize access="hasAuthority('MANAGER')">
-        <li><a href="${pageContext.request.contextPath}/getAllCountries">Manage countries</a></li>
+            <td><a href="${pageContext.request.contextPath}/getAllCountries">Manage countries</a></td>
         </sec:authorize>
+        </tr>
+        <tr>
     <sec:authorize access="isAuthenticated()">
-    <li><a href="${pageContext.request.contextPath}/getAllHotelsByCountry">Find hotel in different countries</a></li>
+        <td><a href="${pageContext.request.contextPath}/getAllHotelsByCountry">Find hotel in different countries</a></td>
     </sec:authorize>
+        </tr>
+        <tr>
     <sec:authorize access="isAuthenticated()">
-    <li><a href="${pageContext.request.contextPath}/getAvailableRooms">Check available rooms in hotel in selected period</a></li>
+        <td><a href="${pageContext.request.contextPath}/getAvailableRooms">Check available rooms in hotel in selected period</a></td>
     </sec:authorize>
+        </tr>
+        <tr>
     <sec:authorize access="isAuthenticated()">
-        <li><a href="${pageContext.request.contextPath}/logout">LOGOUT</a></li>
+        <td><a href="${pageContext.request.contextPath}/chooseBooking">Book a room</a></td>
         </sec:authorize>
+        </tr>
+        <tr>
+            <sec:authorize access="isAuthenticated()">
+                <td><a href="${pageContext.request.contextPath}/logout">LOGOUT</a></td>
+            </sec:authorize>
+        </tr>
+    </table>
 </body>
 </html>

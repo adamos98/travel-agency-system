@@ -1,15 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
   User: Adamos
-  Date: 25-Apr-21
-  Time: 1:35 PM
+  Date: 29-Apr-21
+  Time: 11:30 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Title</title>
@@ -42,38 +43,43 @@
             padding: 5px 10px;
         }
     </style>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#checkIn" ).datepicker({ dateFormat: "yy-mm-dd" });
+        } );
+        $( function() {
+            $( "#checkOut" ).datepicker({ dateFormat: "yy-mm-dd" });
+        } );
+    </script>
 </head>
 <body>
 
-<c:if test="${!empty listOfCustomers}">
+<form:form method="post" modelAttribute="bookingParameters" action="/addBooking">
+<c:if test="${!empty listOfAllRooms}">
     <table class="tg">
         <tr>
-            <th >Customer e-mail</th>
-            <th >First name</th>
-            <th >Last name</th>
-            <th >Phone number</th>
-            <th >Orders</th>
+            <th width="120">Number of room</th>
+            <th width="120">Hotel name</th>
             <th><a href="${pageContext.request.contextPath}/homePage">Go to homepage</a></th>
         </tr>
-        <c:forEach items="${listOfCustomers}" var="customer">
+        <c:forEach items="${listOfAllRooms}" var="room">
             <tr>
-                <td>${customer.email}</td>
-                <td>${customer.fname}</td>
-                <td>${customer.lname}</td>
-                <td>${customer.phoneNumber}</td>
-                <td><c:forEach items="${customer.bookings}" var="booking">
-                    ----------------------------ORDER--------------------------------<br>
-                  Booking date placed: ${booking.dateOfOrderPlaced}<br>
-                    Booking check in: ${booking.checkIn}<br>
-                    Booking check out: ${booking.checkOut}<br>
-                    Booking price: ${booking.price}<br>
-                Hotel details: ${booking.room.hotel.name} ${booking.room.hotel.address}<br>
-                    ------------------------------------------------------------------------<br>
-                </c:forEach>
-                </td>
+                <form:hidden path="hotelId" value="${room.hotel.id}"/>
+                <form:hidden path="checkIn" value="${bookingParameters.checkIn}"/>
+                <form:hidden path="checkOut" value="${bookingParameters.checkOut}"/>
+                <form:hidden path="roomId" value="${room.id}"/>
+
+                <td>${room.numberOfRoom}</td>
+                <td>${room.hotel.name} ${room.hotel.address}</td>
+                <td><input type="submit"
+                           class="blue-button" value="Book a room" /></td>
             </tr>
         </c:forEach>
     </table>
 </c:if>
+</form:form>
 </body>
 </html>
