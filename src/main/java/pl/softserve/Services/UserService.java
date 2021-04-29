@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.softserve.Models.User;
 import pl.softserve.dao.UserDAO;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -50,5 +51,6 @@ public class UserService {
     public User findByEmail(String email){
         return userDAO.findByEmail(email);
     }
+
 
 }

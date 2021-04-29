@@ -42,10 +42,11 @@
     </style>
 </head>
 <body>
-<form:form method="post" modelAttribute="country" action="/travel_agency_system_war_exploded/addCountry">
+<form:form method="post" modelAttribute="country" action="/addCountry">
     <table>
         <tr>
             <th colspan="2">Add Country</th>
+            <th><a href="${pageContext.request.contextPath}/homePage">Go to homepage</a></th>
         </tr>
         <tr>
             <form:hidden path="id" />

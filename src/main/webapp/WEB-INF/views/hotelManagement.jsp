@@ -46,7 +46,7 @@
     </style>
 </head>
 <body>
-<form:form method="post" modelAttribute="hotel" action="/travel_agency_system_war_exploded/addHotel">
+<form:form method="post" modelAttribute="hotel" action="/addHotel">
     <table>
         <tr>
             <th colspan="2">Add Hotel</th>

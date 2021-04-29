@@ -45,7 +45,7 @@
 </head>
 <body>
 <form:form method="get" modelAttribute="country"
-           action="/travel_agency_system_war_exploded/getHotelsByCountryId/">
+           action="/getHotelsByCountryId/">
 
     <table>
     <tr>

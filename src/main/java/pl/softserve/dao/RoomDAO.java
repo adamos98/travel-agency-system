@@ -8,6 +8,7 @@ import pl.softserve.Models.Hotel;
 import pl.softserve.Models.Room;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -59,6 +60,10 @@ public class RoomDAO {
         Room room = (Room) session.load(Room.class,id);
         if (null != room)
             session.delete(room);
+    }
+
+    public LocalDate converter(String date) {
+        return LocalDate.parse(date);
     }
 
 

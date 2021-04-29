@@ -43,10 +43,21 @@
             padding: 5px 10px;
         }
     </style>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#checkIn" ).datepicker({ dateFormat: "yy-mm-dd" });
+        } );
+        $( function() {
+            $( "#checkOut" ).datepicker({ dateFormat: "yy-mm-dd" });
+        } );
+    </script>
 </head>
 <body>
 <form:form method="get" modelAttribute="bookingParameters"
-           action="/travel_agency_system_war_exploded/getAvailableRoomsByDate/">
+           action="/getAvailableRoomsByDate/">
     <table>
         <tr>
             <th colspan="2">Show available rooms</th>

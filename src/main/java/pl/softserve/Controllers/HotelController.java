@@ -38,7 +38,7 @@ public class HotelController {
         model.addAttribute("country", new Country());
         model.addAttribute("listOfHotels", listOfHotels);
         model.addAttribute("listOfCountries", listOfCountries);
-        return "homePage";
+        return "hotelsByCountry";
     }
 
     @RequestMapping(value = {"/getHotelsByCountryId/"}, method = RequestMethod.GET)
@@ -49,7 +49,7 @@ public class HotelController {
         model.addAttribute("country", new Country());
         model.addAttribute("listOfHotels", listOfHotels);
         model.addAttribute("listOfCountries", listOfCountries);
-        return "homePage";
+        return "hotelsByCountry";
     }
 
     @RequestMapping(value = "/getHotel/{id}", method = RequestMethod.GET, headers = "Accept=application/json")

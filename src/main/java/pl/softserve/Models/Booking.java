@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -13,11 +14,11 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private BigDecimal price; //added column
-    private Date dateOfOrderPlaced;
+    private LocalDate dateOfOrderPlaced;
 
-    private Date checkIn;
+    private LocalDate checkIn;
 
-    private Date checkOut;
+    private LocalDate checkOut;
 
 
     @ManyToOne
@@ -53,27 +54,27 @@ public class Booking {
         this.price = price;
     }
 
-    public Date getDateOfOrderPlaced() {
+    public LocalDate getDateOfOrderPlaced() {
         return dateOfOrderPlaced;
     }
 
-    public void setDateOfOrderPlaced(Date dateOfOrderPlaced) {
+    public void setDateOfOrderPlaced(LocalDate dateOfOrderPlaced) {
         this.dateOfOrderPlaced = dateOfOrderPlaced;
     }
 
-    public Date getCheckIn() {
+    public LocalDate getCheckIn() {
         return checkIn;
     }
 
-    public void setCheckIn(Date checkIn) {
+    public void setCheckIn(LocalDate checkIn) {
         this.checkIn = checkIn;
     }
 
-    public Date getCheckOut() {
+    public LocalDate getCheckOut() {
         return checkOut;
     }
 
-    public void setCheckOut(Date checkOut) {
+    public void setCheckOut(LocalDate checkOut) {
         this.checkOut = checkOut;
     }
 

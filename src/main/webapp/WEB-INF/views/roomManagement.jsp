@@ -42,7 +42,7 @@
     </style>
 </head>
 <body>
-<form:form method="post" modelAttribute="room" action="/travel_agency_system_war_exploded/addRoom">
+<form:form method="post" modelAttribute="room" action="/addRoom">
     <table>
         <tr>
             <th colspan="2">Add Room</th>

@@ -7,6 +7,7 @@ import pl.softserve.Models.Room;
 import pl.softserve.dao.RoomDAO;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -52,4 +53,10 @@ public class RoomService {
     public void deleteRoom(int id){
         roomDAO.deleteCountry(id);
     }
+
+    @Transactional
+    public LocalDate converter(String date){
+        return roomDAO.converter(date);
+    }
+
 }

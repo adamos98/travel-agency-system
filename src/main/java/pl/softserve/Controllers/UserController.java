@@ -20,7 +20,7 @@ public class UserController {
 
     @RequestMapping(value = "/getAllCustomers", method = RequestMethod.GET)
     public String getCustomers(Model model){
-        List<User> listOfCustomers = userService.getAllCustomers();
+        List<User> listOfCustomers = userService.getAllUsers();
         model.addAttribute("customer", new User());
         model.addAttribute("listOfCustomers", listOfCustomers);
         return "customerOrderDetails";

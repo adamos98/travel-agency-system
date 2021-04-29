@@ -17,17 +17,25 @@
 <body>
 <ul class="navbar">
     <sec:authorize access="hasAuthority('MANAGER')">
-    <li><a href="${pageContext.request.contextPath}/getAllCustomers">USERS</a></li>
+    <li><a href="${pageContext.request.contextPath}/getAllCustomers">View all users and their orders</a></li>
     </sec:authorize>
     <sec:authorize access="hasAuthority('MANAGER')">
-    <li><a href="${pageContext.request.contextPath}/getAllHotels">HOTELS</a></li>
+    <li><a href="${pageContext.request.contextPath}/getAllHotels">Manage hotels</a></li>
+    </sec:authorize>
+        <sec:authorize access="hasAuthority('MANAGER')">
+        <li><a href="${pageContext.request.contextPath}/getAllRooms">Manage rooms</a></li>
+        </sec:authorize>
+        <sec:authorize access="hasAuthority('MANAGER')">
+        <li><a href="${pageContext.request.contextPath}/getAllCountries">Manage countries</a></li>
+        </sec:authorize>
+    <sec:authorize access="isAuthenticated()">
+    <li><a href="${pageContext.request.contextPath}/getAllHotelsByCountry">Find hotel in different countries</a></li>
     </sec:authorize>
     <sec:authorize access="isAuthenticated()">
-    <li><a href="${pageContext.request.contextPath}/getAllHotelsByCountry">Hotels by Country</a></li>
+    <li><a href="${pageContext.request.contextPath}/getAvailableRooms">Check available rooms in hotel in selected period</a></li>
     </sec:authorize>
-
     <sec:authorize access="isAuthenticated()">
-    <li><a href="${pageContext.request.contextPath}/getAvailableRooms">Check available rooms</a></li>
-    </sec:authorize>
+        <li><a href="${pageContext.request.contextPath}/logout">LOGOUT</a></li>
+        </sec:authorize>
 </body>
 </html>
